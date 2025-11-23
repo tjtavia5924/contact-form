@@ -1,0 +1,51 @@
+{
+  "fields": [
+    {
+      "label": "First Name",
+      "type": "text",
+      "required": true,
+      "errorMessage": "This field is required."
+    },
+    {
+      "label": "Last Name",
+      "type": "text",
+      "required": true,
+      "errorMessage": "This field is required."
+    },
+    {
+      "label": "Email Address",
+      "type": "email",
+      "required": true,
+      "errorMessage": [
+        "Please enter a valid email address.",
+        "This field is required."
+      ]
+    },
+    {
+      "label": "Query Type",
+      "type": "radio",
+      "select": ["General Enquiry", "SupportRequest"],
+      "required": true,
+      "warning": "Please select a query type."
+    },
+    {
+      "label": "Message",
+      "type": "textarea",
+      "required": true,
+      "errorMessage": "This field is required."
+    },
+    {
+      "label": "I consent to being contacted by the team",
+      "type": "checkbox",
+      "required": true,
+      "errorMessage": "To submit this form, please consent to being contacted."
+    }
+  ],
+  "submit": [
+    {
+      "buttonText": "Submit",
+      "toastLabel": "Message sent!",
+      "message": "Thanks for completing the for. We will be in touch soon!"
+    }
+  ]
+}
