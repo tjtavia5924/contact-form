@@ -1,41 +1,55 @@
 import { Button } from "@/components/ui/button";
 import {
   Field,
-  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
   FieldLegend,
-
   FieldSet,
-  
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
-import { Switch } from "@/components/ui/switch"
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import form from "./formStructure/formStructure.json";
+
+interface FormField {
+  label: string;
+  type: string;
+  select?: string[];
+  required: boolean;
+  errorMessage: string | string[]; // Ensure this is always provided
+}
+
+interface DisplayFieldsProps {
+  field: FormField;
+}
 
 function App() {
+  const displayFields = (field: any) => {
+    if (field.type === "text") {
+      return (
+        <Field>
+          <FieldLabel htmlFor={field.label}>{field.label}</FieldLabel>
+          <Input
+            id={field.label}
+            autoComplete="off"
+            aria-invalid={field.errorMessage ? true : false}
+          />
+          {field.errorMessage ? (
+            <FieldError>{field.errorMessage}</FieldError>
+          ) : null}
+        </Field>
+      );
+    }
+  };
   return (
     <div className="flex min-h-svh flex-col items-center justify-center">
       <FieldSet>
-  <FieldLegend>Profile</FieldLegend>
-  <FieldDescription>This appears on invoices and emails.</FieldDescription>
-  <FieldGroup>
-    <Field>
-      <FieldLabel htmlFor="name">Full name</FieldLabel>
-      <Input id="name" autoComplete="off" placeholder="Evil Rabbit" />
-      <FieldDescription>This appears on invoices and emails.</FieldDescription>
-    </Field>
-    <Field>
-      <FieldLabel htmlFor="username">Username</FieldLabel>
-      <Input id="username" autoComplete="off" aria-invalid />
-      <FieldError>Choose another username.</FieldError>
-    </Field>
-    <Field orientation="horizontal">
-      <Switch id="newsletter" />
-      <FieldLabel htmlFor="newsletter">Subscribe to the newsletter</FieldLabel>
-    </Field>
-  </FieldGroup>
-</FieldSet>
+        <FieldLegend>Profile</FieldLegend>
+        <FieldGroup>
+          {form.fields.map((field) => (
+            <div key={field.label}>{displayFields(field)}</div>
+          ))}
+        </FieldGroup>
+      </FieldSet>
       <Button>Click me</Button>
     </div>
   );
