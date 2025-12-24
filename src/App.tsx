@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {
-  FieldGroup,
-} from "@/components/ui/field";
+import { FieldGroup } from "@/components/ui/field";
 import form from "./formStructure/formStructure.json";
 import TextField from "./components/TextField";
 import EmailAddressField from "./components/EmailAddressField";
@@ -12,7 +10,7 @@ export interface FormField {
   type: string;
   select?: string[];
   required: boolean;
-  errorMessage: string | string[]; 
+  errorMessage: string | string[];
 }
 
 function App() {
@@ -23,18 +21,25 @@ function App() {
       );
     } else if (field.type === "email") {
       return (
-        <EmailAddressField label={field.label} errorMessage={field.errorMessage} />
+        <EmailAddressField
+          label={field.label}
+          errorMessage={field.errorMessage}
+        />
       );
     } else if (field.type === "radio" && field.select) {
       return (
-        <QueryTypeSelection label={field.label} select={field.select} errorMessage={field.errorMessage} />
+        <QueryTypeSelection
+          label={field.label}
+          select={field.select}
+          errorMessage={field.errorMessage}
+        />
       );
     }
   };
   return (
     <div className="">
       {/* <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md border border-gray-300"> */}
-      <FieldGroup className="grid grid-cols-2 gap-4">
+      <FieldGroup className="grid grid-cols-2 gap-[1rem]">
         {form.fields.map((field) => (
           <div
             key={field.label}
