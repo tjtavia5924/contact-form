@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="">
       {/* <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md border border-gray-300"> */}
-      <FieldGroup className="grid grid-cols-2 gap-[1rem]">
+      <FieldGroup className="grid grid-cols-2 gap-0.5 p-5">
         {form.fields.map((field) => (
           <div
             key={field.label}
