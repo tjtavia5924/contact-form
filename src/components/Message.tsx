@@ -1,0 +1,14 @@
+import { Field, FieldLabel } from "./ui/field";
+import { Textarea } from "./ui/textarea";
+
+export default function Message(field: {
+  label: string;
+  errorMessage?: string | string[];
+}) {
+  return (
+    <Field>
+      <FieldLabel htmlFor={`${field.label}`}>{field.label}</FieldLabel>
+      <Textarea />
+    </Field>
+  );
+}

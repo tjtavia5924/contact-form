@@ -1,6 +1,10 @@
 {
   "fields": [
     {
+      "label": "Contact Us",
+      "type": "heading"
+    },
+    {
       "label": "First Name",
       "type": "text",
       "required": true,
@@ -24,7 +28,7 @@
     {
       "label": "Query Type",
       "type": "radio",
-      "select": ["General Enquiry", "SupportRequest"],
+      "select": ["General Enquiry", "Support Request"],
       "required": true,
       "errorMessage": "Please select a query type."
     },
