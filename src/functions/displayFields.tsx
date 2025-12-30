@@ -1,7 +1,9 @@
+import Consent from "@/components/Consent";
 import EmailAddressField from "@/components/EmailAddressField";
 import Heading from "@/components/Heading";
 import Message from "@/components/Message";
 import QueryTypeSelection from "@/components/QueryTypeSelection";
+import Submit from "@/components/Submit";
 import TextField from "@/components/TextField";
 
 interface FormField {
@@ -37,6 +39,10 @@ export const displayFields = (field: FormField) => {
       );
     case "textarea":
       return <Message label={field.label} errorMessage={field.errorMessage} />;
+    case "checkbox":
+      return <Consent type={field.type} label={field.label} />;
+    case "submit":
+      return <Submit label={field.label} />;
     default:
       return null;
   }

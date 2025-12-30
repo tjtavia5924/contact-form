@@ -43,13 +43,12 @@
       "type": "checkbox",
       "required": true,
       "errorMessage": "To submit this form, please consent to being contacted."
-    }
-  ],
-  "submit": [
+    },
     {
-      "buttonText": "Submit",
+      "label": "Submit",
+      "type": "submit",
       "toastLabel": "Message sent!",
-      "message": "Thanks for completing the for. We will be in touch soon!"
+      "message": "Thanks for completing the form. We will be in touch soon!"
     }
   ]
 }

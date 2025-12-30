@@ -9,6 +9,7 @@ export default function EmailAddressField(field: {
     <Field>
       <FieldLabel htmlFor={field.label}>{field.label}</FieldLabel>
       <Input
+        className="w-163.5 h-12.75"
         id={field.label}
         type="email"
         autoComplete="off"

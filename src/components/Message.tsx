@@ -8,7 +8,7 @@ export default function Message(field: {
   return (
     <Field>
       <FieldLabel htmlFor={`${field.label}`}>{field.label}</FieldLabel>
-      <Textarea />
+      <Textarea className="w-164 h-26.25 " />
     </Field>
   );
 }

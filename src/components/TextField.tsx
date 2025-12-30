@@ -9,7 +9,7 @@ export default function TextField(field: {
     <Field>
       <FieldLabel htmlFor={`${field.label}`}>{field.label}</FieldLabel>
       <Input
-        className="max-w-lg"
+        className="w-xl h-12.75"
         id={`${field.label}`}
         autoComplete="off"
         aria-invalid={field.errorMessage ? true : false}
