@@ -7,7 +7,7 @@ export default function QueryTypeSelection(field: {
   errorMessage?: string | string[];
 }) {
   return (
-    <Field>
+    <Field className="mt-2">
       <RadioGroup defaultValue="comfortable">
         <FieldLabel className="text-gray-900">{field.label}</FieldLabel>
         <div className="flex gap-4">
@@ -32,14 +32,4 @@ export default function QueryTypeSelection(field: {
       </RadioGroup>
     </Field>
   );
-}
-
-{
-  /* <input
-              type="radio"
-              name={field.label}
-              value={option}
-              aria-invalid={field.errorMessage ? true : false}
-              className="cursor-pointer"
-            /> */
 }

@@ -6,7 +6,7 @@ export default function EmailAddressField(field: {
   errorMessage?: string | string[];
 }) {
   return (
-    <Field>
+    <Field className="mt-2">
       <FieldLabel htmlFor={field.label}>{field.label}</FieldLabel>
       <Input
         className="w-163.5 h-12.75"

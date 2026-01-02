@@ -6,13 +6,13 @@ import QueryTypeSelection from "@/components/QueryTypeSelection";
 import Submit from "@/components/Submit";
 import TextField from "@/components/TextField";
 
-interface FormField {
+export type FormField = {
   label: string;
   type: string;
   select?: string[];
   required: boolean;
   errorMessage: string | string[];
-}
+};
 
 export const displayFields = (field: FormField) => {
   switch (field.type) {

@@ -6,7 +6,7 @@ export default function Message(field: {
   errorMessage?: string | string[];
 }) {
   return (
-    <Field>
+    <Field className="mt-2">
       <FieldLabel htmlFor={`${field.label}`}>{field.label}</FieldLabel>
       <Textarea className="w-164 h-26.25 " />
     </Field>
