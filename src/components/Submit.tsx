@@ -4,6 +4,7 @@ export default function Submit(field: { label: string }) {
   return (
     <div className="flex items-center justify-center">
       <Button
+        type="submit"
         variant="outline"
         className="w-163.5 h-12.75 bg-green-900 text-white"
       >

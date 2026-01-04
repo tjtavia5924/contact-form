@@ -5,10 +5,16 @@ export default function QueryTypeSelection(field: {
   label: string;
   select?: string[];
   errorMessage?: string | string[];
+  value?: string;
+  onChange?: (value: string) => void;
+  error?: string;
 }) {
   return (
     <Field className="mt-2">
-      <RadioGroup defaultValue="comfortable">
+      <RadioGroup
+        value={field.value || ""}
+        onValueChange={(value) => field.onChange?.(value)}
+      >
         <FieldLabel className="text-gray-900">{field.label}</FieldLabel>
         <div className="flex gap-4">
           {field.select?.map((option: string) => (
@@ -26,9 +32,7 @@ export default function QueryTypeSelection(field: {
             </div>
           ))}
         </div>
-        {/* {field.errorMessage ? (
-        <FieldError>{field.errorMessage}</FieldError>
-      ) : null} */}
+        {field.error && <FieldError>{field.error}</FieldError>}
       </RadioGroup>
     </Field>
   );

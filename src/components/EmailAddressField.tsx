@@ -4,6 +4,9 @@ import { Input } from "@/components/ui/input";
 export default function EmailAddressField(field: {
   label: string;
   errorMessage?: string | string[];
+  value?: string;
+  onChange?: (value: string) => void;
+  error?: string;
 }) {
   return (
     <Field className="mt-2">
@@ -13,11 +16,11 @@ export default function EmailAddressField(field: {
         id={field.label}
         type="email"
         autoComplete="off"
-        aria-invalid={field.errorMessage ? true : false}
+        value={field.value || ""}
+        onChange={(e) => field.onChange?.(e.target.value)}
+        aria-invalid={field.error ? true : false}
       />
-      {/* {field.errorMessage ? (
-        <FieldError>{field.errorMessage}</FieldError>
-      ) : null} */}
+      {field.error && <FieldError>{field.error}</FieldError>}
     </Field>
   );
 }
