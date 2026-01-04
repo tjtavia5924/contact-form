@@ -94,7 +94,6 @@ function App() {
 
     if (validateForm()) {
       console.log("Form submitted successfully:", formValues);
-      // Here you can add your submit logic (e.g., API call)
     }
   };
 
@@ -146,7 +145,7 @@ function App() {
 
   return (
     <form
-      className="flex items-center justify-center min-h-screen bg-green-200 py-32"
+      className="flex items-center justify-center min-h-screen bg-custom-green-light py-32"
       onSubmit={handleSubmit}
     >
       <div className="w-184 min-h-193.25 bg-white rounded-lg shadow-md border border-gray-300 p-10">

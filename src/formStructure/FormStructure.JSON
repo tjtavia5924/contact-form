@@ -8,21 +8,21 @@
       "label": "First Name",
       "type": "text",
       "required": true,
-      "errorMessage": "This field is required."
+      "errorMessage": "This field is required"
     },
     {
       "label": "Last Name",
       "type": "text",
       "required": true,
-      "errorMessage": "This field is required."
+      "errorMessage": "This field is required"
     },
     {
       "label": "Email Address",
       "type": "email",
       "required": true,
       "errorMessage": [
-        "Please enter a valid email address.",
-        "This field is required."
+        "Please enter a valid email address",
+        "This field is required"
       ]
     },
     {
@@ -30,19 +30,19 @@
       "type": "radio",
       "select": ["General Enquiry", "Support Request"],
       "required": true,
-      "errorMessage": "Please select a query type."
+      "errorMessage": "Please select a query type"
     },
     {
       "label": "Message",
       "type": "textarea",
       "required": true,
-      "errorMessage": "This field is required."
+      "errorMessage": "This field is required"
     },
     {
       "label": "I consent to being contacted by the team",
       "type": "checkbox",
       "required": true,
-      "errorMessage": "To submit this form, please consent to being contacted."
+      "errorMessage": "To submit this form, please consent to being contacted"
     },
     {
       "label": "Submit",

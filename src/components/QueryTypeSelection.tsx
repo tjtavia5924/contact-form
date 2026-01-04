@@ -20,7 +20,13 @@ export default function QueryTypeSelection(field: {
           {field.select?.map((option: string) => (
             <div
               key={option}
-              className="w-[320px] h-12.75 flex items-center gap-3 border border-black rounded-md py-3 px-6"
+              className={`w-[320px] h-12.75 flex items-center gap-3 rounded-md py-3 px-6 ${
+                field.error
+                  ? "border-2 border-red-600"
+                  : field.value === option
+                  ? "border-2 border-custom-green-medium bg-green-200"
+                  : "border border-black"
+              }`}
             >
               <FieldLabel
                 htmlFor={field.label}
@@ -32,7 +38,9 @@ export default function QueryTypeSelection(field: {
             </div>
           ))}
         </div>
-        {field.error && <FieldError>{field.error}</FieldError>}
+        {field.error && (
+          <FieldError className="text-red-600">{field.error}</FieldError>
+        )}
       </RadioGroup>
     </Field>
   );

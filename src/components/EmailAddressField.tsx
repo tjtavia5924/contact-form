@@ -20,7 +20,9 @@ export default function EmailAddressField(field: {
         onChange={(e) => field.onChange?.(e.target.value)}
         aria-invalid={field.error ? true : false}
       />
-      {field.error && <FieldError>{field.error}</FieldError>}
+      {field.error && (
+        <FieldError className="text-red-600">{field.error}</FieldError>
+      )}
     </Field>
   );
 }

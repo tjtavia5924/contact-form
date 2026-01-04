@@ -20,7 +20,7 @@ export default function Consent(field: {
         <Label htmlFor={field.type}>{field.label}</Label>
       </div>
       {field.error && (
-        <FieldError className="w-full max-w-none whitespace-normal">
+        <FieldError className="w-full max-w-none whitespace-normal text-red-600">
           {field.error}
         </FieldError>
       )}
