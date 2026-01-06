@@ -22,9 +22,9 @@ export default function QueryTypeSelection(field: {
               key={option}
               className={`w-[320px] h-12.75 flex items-center gap-3 rounded-md py-3 px-6 ${
                 field.error
-                  ? "border-2 border-red-600"
+                  ? "border-2 border-custom-red"
                   : field.value === option
-                  ? "border-2 border-custom-green-medium bg-green-200"
+                  ? "border-2 border-custom-green-medium bg-custom-green-light"
                   : "border border-black"
               }`}
             >
@@ -39,7 +39,7 @@ export default function QueryTypeSelection(field: {
           ))}
         </div>
         {field.error && (
-          <FieldError className="text-red-600">{field.error}</FieldError>
+          <FieldError className="text-custom-red">{field.error}</FieldError>
         )}
       </RadioGroup>
     </Field>

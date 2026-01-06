@@ -4,4 +4,8 @@
 @theme {
   --color-custom-green-light: hsl(148 38% 91%);
   --color-custom-green-medium: hsl(169, 82%, 27%);
+  --color-custom-red: hsl(0, 66%, 54%);
+  --color-custom-white: hsl(0, 0%, 100%);
+  --color-custom-grey-medium: hsl(186, 15%, 59%);
+  --color-custom-grey-dark: hsl(187, 24%, 22%);
 }

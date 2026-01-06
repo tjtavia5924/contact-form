@@ -21,7 +21,7 @@ export default function EmailAddressField(field: {
         aria-invalid={field.error ? true : false}
       />
       {field.error && (
-        <FieldError className="text-red-600">{field.error}</FieldError>
+        <FieldError className="text-custom-red">{field.error}</FieldError>
       )}
     </Field>
   );
