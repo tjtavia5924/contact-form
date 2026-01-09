@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FieldGroup } from "@/components/ui/field";
 import form from "./formStructure/formStructure.json";
 import { displayFields, type FormField } from "./functions/displayFields";
+import AlertMessage from "./components/AlertMessage";
 
 type FormValues = {
   [key: string]: string | boolean;
@@ -15,6 +16,7 @@ function App() {
   const [formValues, setFormValues] = useState<FormValues>({});
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
+  const [showAlert, setShowAlert] = useState(false);
 
   const validateField = (field: FormField, value: string | boolean) => {
     if (!field.required) return "";
@@ -53,7 +55,7 @@ function App() {
     let isValid = true;
 
     form.fields.forEach((field) => {
-      if (field.type !== "heading" && field.type !== "submit") {
+      if (field.type !== "heading" && field.type !== "submit" && field.label) {
         const error = validateField(
           field as FormField,
           formValues[field.label] || ""
@@ -70,7 +72,7 @@ function App() {
     // Mark all fields as touched to show errors
     const allTouched: { [key: string]: boolean } = {};
     form.fields.forEach((field) => {
-      if (field.type !== "heading" && field.type !== "submit") {
+      if (field.type !== "heading" && field.type !== "submit" && field.label) {
         allTouched[field.label] = true;
       }
     });
@@ -80,6 +82,7 @@ function App() {
   };
 
   const handleChange = (field: FormField, value: string | boolean) => {
+    
     setFormValues((prev) => ({ ...prev, [field.label]: value }));
 
     // Validate on change if field has been touched
@@ -93,6 +96,7 @@ function App() {
     e.preventDefault();
 
     if (validateForm()) {
+      setShowAlert(true);
       console.log("Form submitted successfully:", formValues);
     }
   };
@@ -144,16 +148,24 @@ function App() {
   };
 
   return (
-    <form
-      className="flex items-center justify-center min-h-screen bg-custom-green-light py-32"
-      onSubmit={handleSubmit}
-    >
-      <div className="w-184 min-h-193.25 bg-white rounded-lg shadow-md border border-gray-300 p-10">
-        <FieldGroup className="flex flex-col gap-4">
-          {renderFields()}
-        </FieldGroup>
-      </div>
-    </form>
+    <>
+      {showAlert && (
+        <AlertMessage 
+          toastLabel={form.fields.find(f => f.type === "submit")?.toastLabel || ""} 
+          toastMessage={form.fields.find(f => f.type === "submit")?.toastMessage || ""}
+        />
+      )}
+      <form
+        className="flex items-center justify-center min-h-screen bg-custom-green-light py-32"
+        onSubmit={handleSubmit}
+      >
+        <div className="w-184 min-h-193.25 bg-white rounded-lg shadow-md border border-gray-300 p-10">
+          <FieldGroup className="flex flex-col gap-4">
+            {renderFields()}
+          </FieldGroup>
+        </div>
+      </form>
+    </>
   );
 }
 

@@ -10,7 +10,9 @@ export default function EmailAddressField(field: {
 }) {
   return (
     <Field className="mt-2">
-      <FieldLabel htmlFor={field.label}>{field.label}</FieldLabel>
+      <FieldLabel className="text-custom-grey-dark text-[16px]"htmlFor={field.label}>{field.label}
+         <span className="text-custom-green-medium w-[7px] h-[24px] inline-block ml-1">*</span>
+      </FieldLabel>
       <Input
         className="w-163.5 h-12.75"
         id={field.label}
@@ -21,7 +23,7 @@ export default function EmailAddressField(field: {
         aria-invalid={field.error ? true : false}
       />
       {field.error && (
-        <FieldError className="text-custom-red">{field.error}</FieldError>
+        <FieldError className="text-custom-red text-[16px]">{field.error}</FieldError>
       )}
     </Field>
   );

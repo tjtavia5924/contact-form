@@ -12,6 +12,8 @@ export type FormField = {
   select?: string[];
   required: boolean;
   errorMessage: string | string[];
+  toastLabel?: string;
+  toastMessage?: string;
 };
 
 export const displayFields = (

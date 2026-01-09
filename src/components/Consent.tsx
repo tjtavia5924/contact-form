@@ -17,10 +17,13 @@ export default function Consent(field: {
           checked={field.checked || false}
           onCheckedChange={(checked) => field.onChange?.(checked as boolean)}
         />
-        <Label htmlFor={field.type}>{field.label}</Label>
+        <Label className="text-custom-grey-dark text-[16px]" htmlFor={field.type}>
+          {field.label}
+          <span className="text-custom-green-medium w-[7px] h-[24px] inline-block ml-1">*</span>
+        </Label>
       </div>
       {field.error && (
-        <FieldError className="w-full max-w-none whitespace-normal text-custom-red">
+        <FieldError className="w-full max-w-none whitespace-normal text-custom-red text-[16px]">
           {field.error}
         </FieldError>
       )}

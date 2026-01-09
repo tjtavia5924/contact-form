@@ -15,7 +15,9 @@ export default function QueryTypeSelection(field: {
         value={field.value || ""}
         onValueChange={(value) => field.onChange?.(value)}
       >
-        <FieldLabel className="text-gray-900">{field.label}</FieldLabel>
+        <FieldLabel className="text-custom-grey-dark text-[16px]">{field.label}
+           <span className="text-custom-green-medium w-[7px] h-[24px] inline-block ml-1">*</span>
+        </FieldLabel>
         <div className="flex gap-4">
           {field.select?.map((option: string) => (
             <div
@@ -25,7 +27,7 @@ export default function QueryTypeSelection(field: {
                   ? "border-2 border-custom-red"
                   : field.value === option
                   ? "border-2 border-custom-green-medium bg-custom-green-light"
-                  : "border border-black"
+                  : "border border-custom-grey-medium"
               }`}
             >
               <FieldLabel
@@ -34,12 +36,12 @@ export default function QueryTypeSelection(field: {
                 className="flex items-center gap-4 cursor-pointer"
               ></FieldLabel>
               <RadioGroupItem value={option} id={option} />
-              <span className="text-gray-900">{option}</span>
+              <span className="text-custom-grey-dark text-[16px]">{option}</span>
             </div>
           ))}
         </div>
         {field.error && (
-          <FieldError className="text-custom-red">{field.error}</FieldError>
+          <FieldError className="text-custom-red text-[16px]">{field.error}</FieldError>
         )}
       </RadioGroup>
     </Field>

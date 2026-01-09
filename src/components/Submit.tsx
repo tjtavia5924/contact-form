@@ -6,7 +6,7 @@ export default function Submit(field: { label: string }) {
       <Button
         type="submit"
         variant="outline"
-        className="w-163.5 h-12.75 bg-green-900 text-white"
+        className="w-163.5 h-12.75 bg-green-900 text-custom-white text-[16px]"
       >
         {field.label}
       </Button>

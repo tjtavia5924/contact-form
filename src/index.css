@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
+@layer base {
+  body {
+    font-family: "Karla", sans-serif;
+  }
+}
+
 @theme {
   --color-custom-green-light: hsl(148 38% 91%);
   --color-custom-green-medium: hsl(169, 82%, 27%);

@@ -48,7 +48,7 @@
       "label": "Submit",
       "type": "submit",
       "toastLabel": "Message sent!",
-      "message": "Thanks for completing the form. We will be in touch soon!"
+      "toastMessage": "Thanks for completing the form. We will be in touch soon!"
     }
   ]
 }
