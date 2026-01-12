@@ -98,6 +98,10 @@ function App() {
     if (validateForm()) {
       setShowAlert(true);
       console.log("Form submitted successfully:", formValues);
+    
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
     }
   };
 
@@ -149,22 +153,31 @@ function App() {
 
   return (
     <>
-      {showAlert && (
-        <AlertMessage 
-          toastLabel={form.fields.find(f => f.type === "submit")?.toastLabel || ""} 
-          toastMessage={form.fields.find(f => f.type === "submit")?.toastMessage || ""}
-        />
-      )}
-      <form
-        className="flex items-center justify-center min-h-screen bg-custom-green-light py-32"
-        onSubmit={handleSubmit}
-      >
-        <div className="w-184 min-h-193.25 bg-white rounded-lg shadow-md border border-gray-300 p-10">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-custom-green-light py-32 relative">        {showAlert && (
+          <AlertMessage 
+            toastLabel={form.fields.find(f => f.type === "submit")?.toastLabel || ""} 
+            toastMessage={form.fields.find(f => f.type === "submit")?.toastMessage || ""}
+          />
+        )}        <form
+          className="w-184 min-h-193.25 bg-white rounded-lg shadow-md border border-gray-300 p-10"
+          onSubmit={handleSubmit}
+        >
           <FieldGroup className="flex flex-col gap-4">
             {renderFields()}
           </FieldGroup>
+        </form>
+        <div className="mt-8 text-xs text-center">
+          Challenge by{' '}
+          <a href="https://www.frontendmentor.io?ref=challenge" className="text-custom-blue">
+            Frontend Mentor
+          </a>
+          . Coded by{' '}
+          <a href="#" className="text-custom-blue">
+            Tavia Thompson
+          </a>
+          .
         </div>
-      </form>
+      </div>
     </>
   );
 }
