@@ -93,20 +93,24 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-custom-green-light py-32 relative">        {showAlert && (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-custom-green-light py-32 relative">
+        {showAlert && (
           <AlertMessage 
             toastLabel={form.fields.find(f => f.type === "submit")?.toastLabel || ""} 
             toastMessage={form.fields.find(f => f.type === "submit")?.toastMessage || ""}
           />
-        )}        <form
-          className="w-184 min-h-193.25 bg-white rounded-lg shadow-md border border-gray-300 p-10"
-          onSubmit={handleSubmit}
-        >
-          <FieldGroup className="flex flex-col gap-4">
-            {renderFields()}
-          </FieldGroup>
-        </form>
-        <div className="mt-8 text-xs text-center">
+        )}
+        <main>
+          <form
+            className="w-184 min-h-193.25 bg-white rounded-lg shadow-md border border-gray-300 p-10"
+            onSubmit={handleSubmit}
+          >
+            <FieldGroup className="flex flex-col gap-4">
+              {renderFields()}
+            </FieldGroup>
+          </form>
+        </main>
+        <footer className="mt-8 text-xs text-center">
           Challenge by{' '}
           <a href="https://www.frontendmentor.io?ref=challenge" className="text-custom-blue">
             Frontend Mentor
@@ -116,7 +120,7 @@ function App() {
             Tavia Thompson
           </a>
           .
-        </div>
+        </footer>
       </div>
     </>
   );

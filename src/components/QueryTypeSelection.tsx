@@ -20,9 +20,10 @@ export default function QueryTypeSelection(field: {
         </FieldLabel>
         <div className="flex gap-4">
           {field.select?.map((option: string) => (
-            <div
+            <label
               key={option}
-              className={`w-[320px] h-12.75 flex items-center gap-3 rounded-md py-3 px-6 ${
+              htmlFor={`${field.label}-${option}`}
+              className={`w-[320px] h-12.75 flex items-center gap-3 rounded-md py-3 px-6 cursor-pointer ${
                 field.error
                   ? "border-2 border-custom-red"
                   : field.value === option
@@ -30,14 +31,9 @@ export default function QueryTypeSelection(field: {
                   : "border border-custom-grey-medium"
               }`}
             >
-              <FieldLabel
-                htmlFor={field.label}
-                key={option}
-                className="flex items-center gap-4 cursor-pointer"
-              ></FieldLabel>
-              <RadioGroupItem value={option} id={option} />
-              <span className="text-custom-grey-dark text-[16px]">{option}</span>
-            </div>
+              <RadioGroupItem value={option} id={`${field.label}-${option}`} aria-label={option} />
+              <span className="text-custom-grey-dark text-[16px]" aria-label={option}>{option}</span>
+            </label>
           ))}
         </div>
         {field.error && (
