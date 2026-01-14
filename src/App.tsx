@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { FieldGroup } from "@/components/ui/field";
-import form from "./formStructure/formStructure.json";
-import { displayFields, type FormField } from "./functions/displayFields";
 import AlertMessage from "./components/AlertMessage";
+import { validateForm, validateField } from "./functions/validation";
+import formData from "./formStructure/formStructure.json";
+import { displayFields, type FormField } from "./customComponents/displayFields";
+
+const form = formData as { fields: FormField[] };
 
 type FormValues = {
   [key: string]: string | boolean;
@@ -18,68 +21,6 @@ function App() {
   const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
   const [showAlert, setShowAlert] = useState(false);
 
-  const validateField = (field: FormField, value: string | boolean) => {
-    if (!field.required) return "";
-
-    if (field.type === "checkbox") {
-      if (!value) {
-        return Array.isArray(field.errorMessage)
-          ? field.errorMessage[1]
-          : field.errorMessage;
-      }
-    } else if (field.type === "email") {
-      if (!value || value === "") {
-        return Array.isArray(field.errorMessage)
-          ? field.errorMessage[1]
-          : field.errorMessage;
-      }
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(value as string)) {
-        return Array.isArray(field.errorMessage)
-          ? field.errorMessage[0]
-          : field.errorMessage;
-      }
-    } else {
-      if (!value || value === "") {
-        return Array.isArray(field.errorMessage)
-          ? field.errorMessage[0]
-          : field.errorMessage;
-      }
-    }
-
-    return "";
-  };
-
-  const validateForm = () => {
-    const errors: FormErrors = {};
-    let isValid = true;
-
-    form.fields.forEach((field) => {
-      if (field.type !== "heading" && field.type !== "submit" && field.label) {
-        const error = validateField(
-          field as FormField,
-          formValues[field.label] || ""
-        );
-        if (error) {
-          errors[field.label] = error;
-          isValid = false;
-        }
-      }
-    });
-
-    setFormErrors(errors);
-
-    // Mark all fields as touched to show errors
-    const allTouched: { [key: string]: boolean } = {};
-    form.fields.forEach((field) => {
-      if (field.type !== "heading" && field.type !== "submit" && field.label) {
-        allTouched[field.label] = true;
-      }
-    });
-    setTouched(allTouched);
-
-    return isValid;
-  };
 
   const handleChange = (field: FormField, value: string | boolean) => {
     
@@ -95,10 +36,9 @@ function App() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (validateForm()) {
+    if (validateForm(form, formValues, setFormErrors, setTouched)) {
       setShowAlert(true);
       console.log("Form submitted successfully:", formValues);
-    
       setTimeout(() => {
         setShowAlert(false);
       }, 3000);

@@ -14,6 +14,7 @@ export type FormField = {
   errorMessage: string | string[];
   toastLabel?: string;
   toastMessage?: string;
+  adjust?: boolean;
 };
 
 export const displayFields = (
